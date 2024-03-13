@@ -1,0 +1,43 @@
+<!-- Header -->
+<%- include("partials/header.ejs") %>
+
+<!-- main -->
+<div id="container">
+  <div id="messageSuccess">
+    <% if (locals.messageSuccess) {%>
+    <p><%= messageSuccess %></p>
+    <% } %>
+  </div>
+  <div id="messageError">
+    <% if (locals.messageError) {%>
+    <p><%= messageError %></p>
+    <% } %>
+  </div>
+  <div class="quotes">
+    <h1>"<%= quoteList.quote %>"</h1>
+    <div id="author">
+      <h3>-<%= quoteList.author %></h3>
+    </div>
+  </div>
+  <div id="createButton">
+    <a id="newPostBtn" href="/new">Create Post</a>
+  </div>
+  <% if (post.length > 0) { %>
+  <h2 class="mainPage">All Posts</h2>
+  <div class="allPosts">
+    <% post.forEach((post) => { %>
+    <a href="/postDetail/<%= post.id %>" class="postLink">
+      <div class="postCard">
+        <h3><%= post.title %></h3>
+        <p><%= post.content %></p>
+      </div>
+    </a>
+    <% }) %>
+  </div>
+  <% } else { %>
+  <h2 class="mainPage">There are no posts to display</h2>
+  <% } %>
+</div>
+
+<!-- footer -->
+<%- include("partials/footer.ejs") %>

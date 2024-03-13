@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs") %>
+
+<div class="containerDetails">
+  <section id="pageTitle">
+    <h2><%= post.title %></h2>
+    <div id="pageButtons">
+      <form action="/edit/<%= post.id %>">
+        <button type="submit" class="allDetailButtons" id="green">Edit</button>
+      </form>
+      <form action="/deletePost/<%= post.id %>" method="post">
+        <button type="submit" class="allDetailButtons" id="red">Delete</button>
+      </form>
+      <form action="/">
+        <button type="submit" class="allDetailButtons" id="blue">Cancel</button>
+      </form>
+    </div>
+  </section>
+  <section id="pageContent">
+    <p><%= post.content %></p>
+  </section>
+  <section id="pageFooter">
+    <small>By: <%= post.author %></small>
+    <small><%= post.date %></small>
+  </section>
+</div>
+<%- include("partials/footer.ejs") %>
